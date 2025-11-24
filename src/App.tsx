@@ -8,8 +8,16 @@ import { PricingSection } from "@/components/blocks/pricing-section-2";
 import { Testimonials } from "@/components/blocks/testimonials";
 import { CallToAction } from "@/components/blocks/cta-3";
 import { MinimalFooter } from "@/components/blocks/minimal-footer";
+import { useScrollSnap } from "@/hooks/useScrollSnap";
 
 export default function App() {
+  // Enable GSAP-based scroll snapping
+  useScrollSnap({
+    containerId: 'scroll-container',
+    sectionSelector: 'section',
+    snapDuration: 0.8,
+    snapDelay: 200,
+  });
   // Navigation items for the floating navbar
   const navItems = [
     { name: "Home", link: "home" },
@@ -68,9 +76,9 @@ export default function App() {
           <input 
             type="email" 
             placeholder="Your email address" 
-            className="px-6 py-3 rounded-full bg-white/80 backdrop-blur-sm border lg:text-xl border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 min-w-[280px]"
+            className="px-6 py-3 rounded-full bg-white/70 backdrop-blur-xl border border-gray-300/50 lg:text-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-[0_4px_15px_rgb(0,0,0,0.08)] min-w-[280px]"
           />
-          <button className="bg-gray-900 hover:bg-gray-800 lg:text-xl rounded-full text-white px-6 py-3 flex items-center gap-2 transition-colors">
+          <button className="bg-gray-900 hover:bg-gray-800 hover:font-bold lg:text-xl rounded-full text-white px-6 py-3 flex items-center gap-2 transition-colors">
             
             Get Started
           </button>

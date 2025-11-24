@@ -37,7 +37,7 @@ export function CallToAction() {
               placeholder="Your email address" 
               className="w-full sm:flex-1 px-6 py-4 rounded-full bg-white/90 backdrop-blur-sm border-2 border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900 shadow-sm"
             />
-            <Button className="w-full sm:w-auto bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-medium shadow-lg h-auto transistion-transform duration-300 ">
+            <Button className="w-full sm:w-auto bg-gray-900 hover:text-white text-gray-200 px-8 py-4 rounded-full font-medium shadow-lg h-auto transistion-transform duration-300 ">
               Get Started
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

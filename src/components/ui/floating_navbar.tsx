@@ -59,6 +59,12 @@ export function FloatingNav({
     
     if (container && element) {
       const offsetTop = element.offsetTop;
+      
+      // Disable scroll snapping during navigation
+      if ((window as any).__disableScrollSnap) {
+        (window as any).__disableScrollSnap();
+      }
+      
       gsap.to(container, {
         duration: 1.2,
         scrollTop: offsetTop,

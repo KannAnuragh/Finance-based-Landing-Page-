@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export function CallToAction() {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-48 bg-white relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-8xl">
         <div className="relative mx-auto flex w-full max-w-8xl flex-col items-center justify-center gap-y-8 rounded-3xl bg-gradient-to-br from-blue-50 via-blue-100 to-blue-600 px-8 py-16 md:py-20 overflow-hidden">
           {/* Animated gradient orbs */}
@@ -25,19 +25,19 @@ export function CallToAction() {
             ></div>
           </div>
           
-          <div className="relative z-10 space-y-4 max-w-6xl">
-            <h2 className="text-center font-bold text-3xl md:text-3xl lg:text-4xl text-gray-900 leading-loose">
+          <div className="relative space-y-4 max-w-5xl">
+            <h2 className="text-center font-bold text-4xl md:text-3xl lg:text-4xl text-gray-900 leading-loose">
               Experience Effortless Banking And Smarter Financial Decisions.
             </h2>
           </div>
 
-          <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-2xl">
+          <div className="relative flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-2xl">
             <input 
               type="email" 
               placeholder="Your email address" 
               className="w-full sm:flex-1 px-6 py-4 rounded-full bg-white/90 backdrop-blur-sm border-2 border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900 shadow-sm"
             />
-            <Button className="w-full sm:w-auto bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-medium shadow-lg h-auto hover:scale-110 transistion-transform duration-300 ">
+            <Button className="w-full sm:w-auto bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-medium shadow-lg h-auto transistion-transform duration-300 ">
               Get Started
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

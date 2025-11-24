@@ -78,7 +78,7 @@ const Feature = ({
         {number}
       </div>
       
-      <div className="relative z-10 flex flex-col h-full">
+      <div className="relative flex flex-col h-full">
         {/* Icon */}
         <div className="mb-6 text-blue-600 group-hover/feature:text-blue-700 transition-all duration-300">
           <div className="group-hover/feature:scale-110 transition-transform duration-300 inline-block">

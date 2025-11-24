@@ -1,5 +1,5 @@
 import { AuroraBackground } from "@/components/ui/aurora-background";
-import { FloatingNav } from "@/components/ui/floating-navbar";
+import { FloatingNav } from "@/components/ui/floating_navbar";
 import { motion } from "framer-motion";
 import { Logos3 } from "@/components/blocks/logos3";
 import { Gallery6 } from "@/components/blocks/gallery6";
@@ -10,17 +10,37 @@ import { CallToAction } from "@/components/blocks/cta-3";
 import { MinimalFooter } from "@/components/blocks/minimal-footer";
 
 export default function App() {
+  // Navigation items for the floating navbar
   const navItems = [
-    { name: "Home", link: "#home" },
-    { name: "Features", link: "#features" },
-    { name: "How It Works", link: "#how-it-works" },
-    { name: "Pricing", link: "#pricing" },
+    { name: "Home", link: "home" },
+    { name: "Features", link: "features" },
+    { name: "How It Works", link: "how-it-works" },
+    { name: "Pricing", link: "pricing" },
   ];
 
+  /**
+   * SCROLL SNAP CONFIGURATION
+   * 
+   * To adjust scroll snap behavior, modify these Tailwind classes on the main container:
+   * 
+   * - snap-y snap-mandatory: Enables vertical scroll snapping with mandatory snap points
+   * - h-screen: Makes container full viewport height
+   * - overflow-y-scroll: Enables vertical scrolling
+   * 
+   * For each section Element:
+   * - snap-start: Snaps to the start of the element
+   * - snap-center: Alternative - snaps to center of viewport
+   * - snap-end: Alternative - snaps to end of viewport
+   * 
+   * To disable snap on specific sections, remove the snap-start class from that Element.
+   * To change snap strictness, replace snap-mandatory with snap-proximity for looser snapping.
+   */
+
   return (
-    <>
-      <AuroraBackground>
-        <FloatingNav navItems={navItems} />
+    <div id="scroll-container" className="h-screen overflow-y-scroll">{/* Main scroll container - edit classes here to adjust snap behavior */}
+      <section id="home">
+        <AuroraBackground>
+          <FloatingNav navItems={navItems} />
       <div className="relative flex flex-col gap-6 items-center justify-center px-4 text-center max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -56,21 +76,36 @@ export default function App() {
           </button>
         </motion.div>
       </div>
-    </AuroraBackground>
+        </AuroraBackground>
+      </section>
 
-    <Logos3 />
+      <section id="logos">
+        <Logos3 />
+      </section>
     
-    <Gallery6 />
+      <section id="features">
+        <Gallery6 />
+      </section>
     
-    <FeaturesSectionWithHoverEffects />
+      <section id="how-it-works">
+        <FeaturesSectionWithHoverEffects />
+      </section>
     
-    <PricingSection />
+      <section id="pricing">
+        <PricingSection />
+      </section>
     
-    <Testimonials />
+      <section id="testimonials">
+        <Testimonials />
+      </section>
     
-    <CallToAction />
+      <section id="cta">
+        <CallToAction />
+      </section>
     
-    <MinimalFooter />
-    </>
+      <section id="footer">
+        <MinimalFooter />
+      </section>
+    </div>
   );
 }

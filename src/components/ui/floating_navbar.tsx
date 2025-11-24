@@ -2,6 +2,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { cn } from "@/lib/utils";
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+// Register GSAP ScrollToPlugin
+gsap.registerPlugin(ScrollToPlugin);
 
 export interface FloatingNavItem {
   name: string;
@@ -47,6 +52,21 @@ export function FloatingNav({
     
   });
 
+  // Smooth scroll to section using GSAP
+  const handleScrollTo = (sectionId: string) => {
+    const container = document.getElementById('scroll-container');
+    const element = document.getElementById(sectionId);
+    
+    if (container && element) {
+      const offsetTop = element.offsetTop;
+      gsap.to(container, {
+        duration: 1.2,
+        scrollTop: offsetTop,
+        ease: "power2.inOut"
+      });
+    }
+  };
+
   return (
     <AnimatePresence mode="wait">
       <motion.nav
@@ -76,43 +96,44 @@ export function FloatingNav({
           </motion.a>
 
           {/* Nav Links */}
-            <div className="hidden md:flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-2">
             {navItems.map((item, idx) => (
-                <motion.a
+              <button
                 key={item.link + idx}
-                href={item.link}
-                className="relative px-6 py-1 text-md font-medium text-gray-800 dark:text-gray-400 rounded-full"
-                whileHover="hover"
-                initial="initial"
-                whileTap={{ scale: 0.95 }}
+                onClick={() => handleScrollTo(item.link)}
+                className="cursor-pointer bg-transparent border-none p-0"
+              >
+                <motion.div
+                  className="relative px-6 py-1 text-md font-medium text-gray-800 dark:text-gray-400 rounded-full"
+                  whileHover="hover"
+                  initial="initial"
+                  whileTap={{ scale: 0.95 }}
                 >
-                {/* Text with zoom */}
-                <motion.span
+                  {/* Text with zoom */}
+                  <motion.span
                     className="relative z-10"
                     variants={{
-                    initial: { color: "rgb(107, 114, 128)", scale: 1 },
-                    hover: { color: "rgb(17, 24, 39)", scale: 1.3 }
+                      initial: { color: "rgb(107, 114, 128)", scale: 1 },
+                      hover: { color: "rgb(17, 24, 39)", scale: 1.3 }
                     }}
                     transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                >
+                  >
                     {item.name}
-                </motion.span>
+                  </motion.span>
 
-                {/* Border animation */}
-                <motion.div
+                  {/* Border animation */}
+                  <motion.div
                     className="absolute inset-0 rounded-full border border-gray-900 dark:border-gray-800"
                     variants={{
-                    initial: { opacity: 0, scale: 0.8 },
-                    hover: { opacity: 1, scale: 1 }
+                      initial: { opacity: 0, scale: 0.8 },
+                      hover: { opacity: 1, scale: 1 }
                     }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                />
-                </motion.a>
+                  />
+                </motion.div>
+              </button>
             ))}
-            </div>
-
-
-
+          </div>
 
           {/* Get Started Button */}
           <motion.button
